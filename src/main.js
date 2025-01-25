@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import './assets/style/index.css'; // 引入全局 CSS
+import '@/icons'
 
 Vue.config.productionTip = false
 

@@ -12,18 +12,41 @@ const routes = [
     {
         path: '/',
         name: 'Layout',
-        redirect: "/home",
+        redirect: "/Home",
         component: () => import('../views/Layout/index.vue'),
         children: [
             {
-                path: "/home",
-                name: 'home',
-                component: () => import('../views/home/index.vue'),
+                path: "/Home",
+                name: 'Home',
+                component: () => import('../views/Home/index.vue'),
                 meta:{
                     title:"首页"
                 }
             },
-            
+            {
+                path: "/Classify",
+                name: 'Classify',
+                component: () => import('../views/Classify/index.vue'),
+                meta:{
+                    title:"分类"
+                }
+            },
+            {
+                path: "/Cart",
+                name: 'Cart',
+                component: () => import('../views/Cart/index.vue'),
+                meta:{
+                    title:"购物车"
+                }
+            },
+            {
+                path: "/My",
+                name: 'My',
+                component: () => import('../views/My/index.vue'),
+                meta:{
+                    title:"我的"
+                }
+            },
         ]
     }
 ]
@@ -35,20 +58,20 @@ const router = new VueRouter({
     routes
 })
 
-// router.beforeEach((to, from, next) => {
-// 	const token = JSON.parse(localStorage.getItem('userInfo')) ? JSON.parse(localStorage.getItem('userInfo')).token : ''
-// 	if(!token){
-// 		if(to.path != '/login'){
-// 			next({path:'/login'})
-// 		}else{
-// 			next()
-// 		}
-// 	}else{
-// 		if(to.path == '/login'){
-// 			next({path:'/'})
-// 		}
-// 	}
-// 	next();
-// });
+router.beforeEach((to, from, next) => {
+	const token = JSON.parse(localStorage.getItem('userInfo')) ? JSON.parse(localStorage.getItem('userInfo')).token : ''
+	if(!token){
+		if(to.path != '/login'){
+			next({path:'/login'})
+		}else{
+			next()
+		}
+	}else{
+		if(to.path == '/login'){
+			next({path:'/'})
+		}
+	}
+	next();
+});
 
 export default router
