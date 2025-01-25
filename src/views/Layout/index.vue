@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-page">
+    <div class="layout-page" ref="scrollContainer">
         <!-- 头部 -->
         <div class="header-page">
             <div class="logo">衣聚</div>
@@ -15,7 +15,9 @@
 
         <!-- 主体 -->
         <div class="main-page">
-            <router-view></router-view>
+            <keep-alive>
+                <router-view ref="routerView"/>
+            </keep-alive>
         </div>
 
         <!-- 导航栏 -->
@@ -64,6 +66,11 @@ export default {
     },
     methods: {
         isActive(path) {
+            const container = this.$refs.scrollContainer;
+            const scrollTop = container ? container.scrollTop : 0;
+            console.log("容器滚动距离：", scrollTop);
+            
+            // 
             return this.$route.path === path;
         },
     },

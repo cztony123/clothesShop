@@ -18,6 +18,14 @@
             </div>
         </div>
 
+        <!-- 为你推荐 -->
+        <div class="recommend">
+            <div class="content" v-for="(item,index) in list" :key="index">
+                <!-- <img v-lazy="item" alt=""> -->
+                <img v-lazy="item" alt="Lazy Image" />
+            </div>
+        </div>
+
         <!-- <button @click="btn">按钮</button> -->
     </div>
 </template>
@@ -31,6 +39,52 @@ export default {
                 "4700004012.jpg",
                 "3329659485.jpg",
                 "4700004012.jpg",
+            ],
+            list:[
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
+                require('../../assets/image/2025125.jpg'),
             ],
             playTimer: null,
             index: 0,
@@ -47,17 +101,17 @@ export default {
                 this.handleSwiper()
             }, 2000)
             let abc = document.querySelectorAll('.indicator span')
-            console.log(abc)
+            // console.log(abc)
         },
         
         handleSwiper(){
-            this.index ++
-            console.log(this.$refs.content)
-            this.$refs.content.style.transform = `translateX(-${this.index * 100}%)` //每张图片滚走的距离
-            this.$refs.content.style.transition = '0.5s' //动画效果
-            if (this.index == this.listUrl.length - 1) {
-                this.index = 0
-            }
+            // this.index ++
+            // console.log(this.$refs.content)
+            // this.$refs.content.style.transform = `translateX(-${this.index * 100}%)` //每张图片滚走的距离
+            // this.$refs.content.style.transition = '0.5s' //动画效果
+            // if (this.index == this.listUrl.length - 1) {
+            //     this.index = 0
+            // }
             
 
             // doms.carouselList.style.transform = `translateX(-${index * 100}%)` //每张图片滚走的距离
@@ -69,6 +123,11 @@ export default {
 			// // 添加选中效果
 			// doms.indicator[index].classList.add('active')
 			// currentIndex = index
+        },
+        someChildMethod(){
+            let scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            console.log(scrollPosition);
+            
         }
     },
 };
@@ -86,7 +145,7 @@ export default {
     width: 100%;
     height: 20%;
     box-sizing: border-box;
-    // overflow: hidden;
+    overflow: hidden;
     .content{
         display: flex;
         width: 100%;
@@ -118,5 +177,23 @@ export default {
             background: #fff;
         }
     }
+}
+
+// 为你推荐
+.recommend{
+    margin-top: 1.25rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
+
+    .content{
+        aspect-ratio: 1 / 1; /* 宽高比为1:1 */
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
 }
 </style>
